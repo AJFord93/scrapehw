@@ -18,9 +18,15 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
+const databaseUri = 'mongodb://localhost/scrapehw'
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/scrapehw");
+if (process.env.MONGODB_URI){
+  mongoose.connect(process.env.MONGODB_URI);
+
+} else {
+  mongoose.connect(databaseUri)
+}
 const db = mongoose.connection;
 
 db.on("error", function(error) {
