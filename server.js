@@ -18,14 +18,14 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
-const databaseUri = 'mongodb://localhost/scrapehw'
+const databaseUrl = 'mongodb://localhost/scrapehw'
 app.use(express.static("public"));
 
-if (process.env.MONGODB_URI){
-  mongoose.connect(process.env.MONGODB_URI);
+if (process.env.MONGODB_URL){
+  mongoose.connect(process.env.MONGODB_URL);
 
 } else {
-  mongoose.connect(databaseUri)
+  mongoose.connect(databaseUrl)
 }
 const db = mongoose.connection;
 
