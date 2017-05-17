@@ -9,6 +9,7 @@ const Article = require("./models/Article.js");
 const request = require("request");
 const cheerio = require("cheerio");
 
+const PORT = process.env.PORT || 3000;
 mongoose.Promise = Promise;
 
 const app = express();
@@ -118,6 +119,6 @@ app.post("/articles/:id", function(req, res) {
   });
 });
 
-app.listen(3000, function() {
-  console.log("App running on port 3000!");
+app.listen(PORT, function() {
+
 });
